@@ -6,9 +6,10 @@ import sublist3r
 #Local imports
 import utils
 
-target = "grupoexito.com.co"
-
 def get_subs(domain):
+	"""
+	Uses sublist3r as domain 
+	"""
 	subdomains = sublist3r.main(target,
 							40,
 							savefile=False,
@@ -27,8 +28,3 @@ def brute_force(domain, wordlist):
 			if utils.is_alive(sub + "." + domain):
 				brute_list.append(sub + "." + domain)
 	return brute_list
-
-#print(get_subs(target))
-wordlist = "docs/small.txt"
-print(brute_force(target, wordlist))
-

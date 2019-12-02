@@ -1,13 +1,9 @@
 #Third party imports
 
 #Python imports
+import random
 
 #Local imports
-import utils
+#import utils
 import domain
-
-target = "grupoexito.com.co"
-wordlist = "docs/subdomain-prefixes.txt"
-
-
 
