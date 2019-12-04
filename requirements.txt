@@ -1,3 +1,6 @@
 -e git://github.com/aboul3la/Sublist3r.git#egg=sublist3r
 -e git://github.com/TheRook/subbrute.git#egg=subbrute
 python-nmap
+tlslite
+typing
+contextlib
