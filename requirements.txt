@@ -1,7 +1,5 @@
--e git://github.com/aboul3la/Sublist3r.git#egg=sublist3r
--e git://github.com/TheRook/subbrute.git#egg=subbrute
+git+https://github.com/aboul3la/Sublist3r.git
 python-nmap
 tlslite
 typing
-contextlib
 google
