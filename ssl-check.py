@@ -31,7 +31,7 @@ class connection:
     def __exit__(self, type, value, traceback):
         return isinstance(value, TypeError)
 
-def check_ssl_3(host, port = default_port):
+def check_ssl_3(host : str, port : int = default_port):
     enabled = False
     with suppress(tlslite.errors.TLSRemoteAlert,
                   tlslite.errors.TLSAbruptCloseError,
@@ -40,7 +40,7 @@ def check_ssl_3(host, port = default_port):
             enabled = True
     return enabled
 
-def check_tls_10(host, port = default_port):
+def check_tls_10(host : str, port : int = default_port):
     enabled = False
     with suppress(tlslite.errors.TLSRemoteAlert,
                   tlslite.errors.TLSAbruptCloseError,
@@ -49,7 +49,7 @@ def check_tls_10(host, port = default_port):
             enabled = True
     return enabled
 
-def check_tls_11(host, port = default_port):
+def check_tls_11(host : str, port : int = default_port):
     enabled = False
     with suppress(tlslite.errors.TLSRemoteAlert,
                   tlslite.errors.TLSAbruptCloseError,
@@ -58,7 +58,7 @@ def check_tls_11(host, port = default_port):
             enabled = True
     return enabled
 
-def check_tls_12(host, port = default_port):
+def check_tls_12(host : str, port : int = default_port):
     enabled = False
     with suppress(tlslite.errors.TLSRemoteAlert,
                   tlslite.errors.TLSAbruptCloseError,
@@ -67,7 +67,7 @@ def check_tls_12(host, port = default_port):
             enabled = True
     return enabled
 
-def all_checks(host, port = default_port):
+def all_checks(host : str, port : int = default_port):
     dict_checks = {}
     dict_checks['ssl3'] = check_ssl_3(host, port)
     dict_checks['tls1'] = check_tls_10(host, port)

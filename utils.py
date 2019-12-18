@@ -1,7 +1,11 @@
+#Third party imports
+
 #Python imports
 import socket
 
-def is_alive(site):
+#Local imports
+
+def is_alive(site : str):
 	"""
 	Function check if site has a public IP address
 	A.K.A.: Public DNS resolution

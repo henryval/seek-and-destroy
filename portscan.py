@@ -10,12 +10,12 @@ import utils
 top_ports_tcp = '21-25,53,80,88,110-143,389,443,445,995,993,1723,3306,3389,5900,8080'
 top_ports_udp = '53,67-69,88,161,162,3389,5353'
 
-def nmap_scan(site, ports=top_ports_tcp, arguments='-sV -T4'):
+def nmap_scan(site : str, ports=top_ports_tcp, arguments='-sV -T4'):
 	"""
 	Simple nmap scan to check on common ports
 	No special flags, no scripts, no udp
 	-- Example --
-	print(nmap_scan("scanme.nmap.org"))
+	print(nmap_scan("scanme.nmap.org")
 	{22: 'OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13', 25: ' ', 80: 'Apache httpd 2.4.7'}
 	"""
 	nm = nmap.PortScanner()
@@ -37,7 +37,7 @@ def nmap_scan(site, ports=top_ports_tcp, arguments='-sV -T4'):
 		print("[!] Host {} is down!".format(site))
 	return result
 
-def nmap_long_scan(site):
+def nmap_long_scan(site : str):
 	"""
 	Long nmap scan to check on all ports
 	Noisy, no scripts, no udp
@@ -45,7 +45,7 @@ def nmap_long_scan(site):
 	long_args = '-Pn -p- --max-retries=1 --min-rate=1000 -A'
 	return nmap_scan(site, ports='', arguments=long_args)
 
-def nmap_agressive(site):
+def nmap_agressive(site : str):
 	"""
 	Long agressive nmap scan to check on all ports
 	Pretty noisy, run all scripts, both TCP and UDP
@@ -53,7 +53,7 @@ def nmap_agressive(site):
 	agres_args = '-Pn -sUT -p- --version-intensity 9 -A'
 	return nmap_scan(site, ports='', arguments=agres_args)
 
-def nmap_re_scan(site, scan: dict):
+def nmap_re_scan(site : str, scan: dict):
 	"""
 	Simple nmap re-scan on the open ports found
 	Intensive version, run scripts
@@ -63,7 +63,7 @@ def nmap_re_scan(site, scan: dict):
 	args = ','.join([str(i) for i in opened])
 	return nmap_scan(site, arguments='-p' + args + ' --version-intensity 9 -sC -A')
 
-def nmap_evasion(site):
+def nmap_evasion(site : str):
 	"""
 	Nmap scan for WAS/IDS evasion
 	Packet fragmentation
