@@ -6,6 +6,7 @@ import random
 
 #Local imports
 import utils
+import sites
 
 top_ports_tcp = '21-25,53,80,88,110-143,389,443,445,995,993,1723,3306,3389,5900,8080'
 top_ports_udp = '53,67-69,88,161,162,3389,5353'
@@ -34,7 +35,7 @@ def nmap_scan(site : str, ports=top_ports_tcp, arguments='-sV -T4'):
 				else:
 					result[port] = "closed"
 	else:
-		print("[!] Host {} is down!".format(site))
+		print("\n[!] Host {} is down!".format(site))
 	return result
 
 def nmap_long_scan(site : str):
