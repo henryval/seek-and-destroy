@@ -1,5 +1,5 @@
 git+https://github.com/aboul3la/Sublist3r.git
 python-nmap
-tlslite
+tlslite-ng
 typing
 google
