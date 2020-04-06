@@ -40,5 +40,4 @@ def found_dir(wordlist: list, domain: str, ext = common_ext):
 words = list(open('C:\\2020\CiberExternas\Módulos SnD\directory-list-1.0.txt'))       
 
 dire, file = found_dir(words,'https://udea.edu.co',[])
-        bancolombiainternacional.com/login/init 
    
