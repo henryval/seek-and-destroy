@@ -7,7 +7,7 @@ import random
  
 requests.packages.urllib3.disable_warnings()
 
-words = list(open('C:\\2020\CiberExternas\SnD\seek-and-destroy\directory-list-1.0.txt'))       
+words = list(open('docs\directory-list.txt'))       
 codes = [200,301,302,401,403] 
 common_ext = ['php','aspx','asp','cgi','pl','txt','html']
 
@@ -33,24 +33,14 @@ def found_dir(wordlist: list, domain: str, ext = common_ext):
         if r.status_code in codes:
             
             results[word]=r.status_code
-            print("\033[0;32m[+]\033[0m"+domain+"/"+word)
-        else:
-            print("\033[0;31m[-]\033[0m"+domain+"/"+word)
+      
         if ext:
             for item in ext:
                 if requests.get(domain+"/"+word+"."+item, verify = False, allow_redirects = True).status_code in codes:
                     results[word+"."+ext]=r.status_code
-                    print("\033[0;32m[-]\033[0m"+domain+"/"+word+"."+item)
-                else:
-                    print("\033[0;31m[-]\033[0m"+domain+"/"+word+"."+item)
             
-                
-    
-                
-      
     return results
         
 
 
 
-final = found_dir(words[:100],'https://udea.edu.co',[])
