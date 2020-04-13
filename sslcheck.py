@@ -1,6 +1,5 @@
 #Third party imports
-from sslyze import server_connectivity_tester
-from sslyze import concurrent_scanner
+from sslyze import server_connectivity
 from sslyze import synchronous_scanner
 from sslyze.plugins import openssl_cipher_suites_plugin as cipher
 
@@ -10,8 +9,10 @@ from sslyze.plugins import openssl_cipher_suites_plugin as cipher
 
 default_port = 443
 
+# DEPRECATED (SSLYZE = 2.1.4) UPGRADE METHODS TO 3.0.1
+
 def syn_scanner(host, port, command_scanner):
-    server_connection = server_connectivity_tester.ServerConnectivityTester(
+    server_connection = server_connectivity.ServerConnectivityTester(
         hostname=host,
         port=port
         )

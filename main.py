@@ -6,12 +6,13 @@ import sys
 #Local imports
 import domain
 import portscan
-import sslcheck
+#import sslcheck
 
-#if len(sys.argv) < 2:
-	#print("Usage: python3 {} TARGET".format(sys.argv[0]))
+if len(sys.argv) < 2:
+	print("Usage: python3 {} TARGET".format(sys.argv[0]))
+	sys.exit(0)
 
-target = "nequi.com"
+target = sys.argv[1]
 
 # Capture subdomains
 
@@ -33,12 +34,17 @@ for item in subs + subs_brute + subs_by_name:
 		subsd.append(item)
 
 print("\n[+][+] Subdomains found! Remember to check!\n")
+subsd = list(set(subsd))
 print(subsd)
+
+f1 = open('resultado.csv', '+w')
+f1.write('subdominio,port,status\n')
 
 print("\n[+] Port-Scanning!")
 for dom in subsd:
 	print("\n[+] Scanning: {}".format(dom))
-	#res = portscan.nmap_scan(dom)
-	#for key in res:
-		#if "filtered" not in res[key] and "closed" not in res[key]:
-			#sites.is_site(res[key], key)
+	res = portscan.nmap_scan(dom)
+	print("[+] " + str(dom) + " : " + str(res))
+	for key, value in res.items():
+		f1.write(dom + ',' + str(key) + ',' + str(value) + '\n')
+f1.close()

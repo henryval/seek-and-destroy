@@ -11,7 +11,7 @@ import sites
 top_ports_tcp = '21-25,53,80,88,110-143,389,443,445,995,993,1723,3306,3389,5900,8080'
 top_ports_udp = '53,67-69,88,161,162,3389,5353'
 
-def nmap_scan(site : str, ports=top_ports_tcp, arguments='-sV -T4'):
+def nmap_scan(site : str, ports=top_ports_tcp, arguments='-Pn -sV -T4'):
 	"""
 	Simple nmap scan to check on common ports
 	No special flags, no scripts, no udp
@@ -19,10 +19,10 @@ def nmap_scan(site : str, ports=top_ports_tcp, arguments='-sV -T4'):
 	print(nmap_scan("scanme.nmap.org")
 	{22: 'OpenSSH 6.6.1p1 Ubuntu 2ubuntu2.13', 25: ' ', 80: 'Apache httpd 2.4.7'}
 	"""
-	nm = nmap.PortScanner()
 	host = utils.is_alive(site)
 	result = {}
 	if host:
+		nm = nmap.PortScanner()
 		nm.scan(host, ports, arguments=arguments)
 		for proto in nm[host].all_protocols():
 			for port in nm[host][proto].keys():
@@ -35,7 +35,7 @@ def nmap_scan(site : str, ports=top_ports_tcp, arguments='-sV -T4'):
 				else:
 					result[port] = "closed"
 	else:
-		print("\n[!] Host {} is down!".format(site))
+		print("[!] Host {} is down!".format(site))
 	return result
 
 def nmap_long_scan(site : str):
