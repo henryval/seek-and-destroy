@@ -1,5 +1,5 @@
+sslyze==3.0.1
 git+https://github.com/aboul3la/Sublist3r.git
 python-nmap
-sslyze==2.1.4
 typing
 google
